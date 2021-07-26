@@ -1,0 +1,25 @@
+---
+title: "01-methykit"
+output: html_document
+---
+
+RAVEN
+
+
+```{r load packages, echo=TRUE, message=FALSE, warning=FALSE}
+library(methylKit)
+library(tidyverse)
+```
+
+```{bash}
+wget -r \
+--no-check-certificate \
+--no-directories --no-parent \
+-P ../data/ \
+-A "[0-9]*sorted.bam" \
+https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/061021-big/
+```
+
+## Samples IDS
+sample_ids_list <- list("0501", "0502", "0503", "3501", "3502", "3503", ----SUS
+                        "5201", "5202", "5203", "5901", "5902", "5903")
