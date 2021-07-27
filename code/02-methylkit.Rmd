@@ -75,20 +75,20 @@ PCASamples(meth_filter)
 
           
 ```{r include=FALSE}
-myDiff=calculateDiffMeth(meth_filter,mc.cores=8)
+myDiff=calculateDiffMeth(meth_filter,mc.cores=24)
 
 ```
 
 ```{r}
 # get hyper methylated bases
-myDiff.hyper=getMethylDiff(myDiff,difference=20,qvalue=0.01,type="hyper")
+myDiff.hyper=getMethylDiff(myDiff,difference=50,qvalue=0.01,type="hyper")
 #
 # get hypo methylated bases
-myDiff.hypo=getMethylDiff(myDiff,difference=20,qvalue=0.01,type="hypo")
+myDiff.hypo=getMethylDiff(myDiff,difference=50,qvalue=0.01,type="hypo")
 #
 #
 # get all differentially methylated bases
-myDiff=getMethylDiff(myDiff,difference=20,qvalue=0.01)
+myDiff=getMethylDiff(myDiff,difference=50,qvalue=0.01)
 
 ```
 
