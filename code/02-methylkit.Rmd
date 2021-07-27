@@ -11,6 +11,41 @@ library(methylKit)
 library(tidyverse)
 ```
 
+Bismark code
+```
+find ${reads_dir}*_R1.fq.gz \
+| xargs basename -s _R1.fq.gz | xargs -I{} ${bismark_dir}/bismark \
+--path_to_bowtie ${bowtie2_dir} \
+-genome ${genome_folder} \
+-p 4 \
+-score_min L,0,-0.6 \
+--non_directional \
+-1 ${reads_dir}{}_R1.fq.gz \
+-2 ${reads_dir}{}_R2.fq.gz
+
+find *.bam | \
+xargs basename -s .bam | \
+xargs -I{} ${bismark_dir}/deduplicate_bismark \
+--bam \
+--paired \
+{}.bam
+
+
+
+${bismark_dir}/bismark_methylation_extractor \
+--bedGraph \
+--counts \
+--comprehensive \
+--merge_non_CpG \
+--multicore 28 \
+--buffer_size 75% \
+*deduplicated.bam
+
+
+```
+
+
+
 ```{bash}
 wget -r \
 --no-check-certificate \
