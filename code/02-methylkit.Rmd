@@ -50,8 +50,52 @@ myobj = processBismarkAln(location = file.list, sample.id = list("0501", "0502",
 save(myobj, file = "../analyses/myobj")
 
 ```
+
+
+```{r include=FALSE}
+load("../analyses/myobj")
+```
+
+
+
           
+```{r message=FALSE, warning=FALSE}
+filtered.myobj=filterByCoverage(myobj,lo.count=5,lo.perc=NULL,
+                                      hi.count=NULL,hi.perc=99)
+
+meth_filter=unite(filtered.myobj, min.per.group=5L, destrand=TRUE)
+
+clusterSamples(meth_filter, dist="correlation", method="ward", plot=TRUE)
+
+
+PCASamples(meth_filter)
+
+```    
+
+
           
-          
-          
+```{r include=FALSE}
+myDiff=calculateDiffMeth(meth_filter,mc.cores=8)
+
+```
+
+```{r}
+# get hyper methylated bases
+myDiff.hyper=getMethylDiff(myDiff,difference=20,qvalue=0.01,type="hyper")
+#
+# get hypo methylated bases
+myDiff.hypo=getMethylDiff(myDiff,difference=20,qvalue=0.01,type="hypo")
+#
+#
+# get all differentially methylated bases
+myDiff=getMethylDiff(myDiff,difference=20,qvalue=0.01)
+
+```
+
+```{r}
+write.table(myDiff, file = "../analyses/myDiff.tab", sep = "\t")
+```
+        
+        
+There were `r nrow(myDiff)` differentially methylated loci iddentifed. 
                         
