@@ -80,6 +80,7 @@ index -@ 28 {}.sorted.bam
 ```
 
 
+## Code to wget Bismark files down from Roberts lab server
 
 ```{bash}
 wget -r \
@@ -90,9 +91,9 @@ wget -r \
 https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/061021-big/
 ```
 
-## Samples IDS
-sample_ids_list <- list("0501", "0502", "0503", "3501", "3502", "3503", ----SUS
-                        "5201", "5202", "5203", "5901", "5902", "5903")
+_Samples IDS_
+"0501", "0502", "0503", "3501", "3502", "3503", ----SUS
+"5201", "5202", "5203", "5901", "5902", "5903" <---- RES
                         
                         
 
