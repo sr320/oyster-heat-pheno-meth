@@ -23,3 +23,35 @@ https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/061021-big/
 ## Samples IDS
 sample_ids_list <- list("0501", "0502", "0503", "3501", "3502", "3503", ----SUS
                         "5201", "5202", "5203", "5901", "5902", "5903")
+                        
+                        
+
+```{r include=FALSE}
+file.list=list('../data/0501_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/0502_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/0503_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/3501_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/3502_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/3503_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/5201_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/5202_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/5203_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/5901_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/5902_R1_bismark_bt2_pe.deduplicated.sorted.bam',
+                 '../data/5903_R1_bismark_bt2_pe.deduplicated.sorted.bam'
+)
+```
+                        
+```{r eval=FALSE, include=FALSE}
+myobj = processBismarkAln(location = file.list, sample.id = list("0501", "0502", "0503", "3501", "3502", "3503","5201", "5202", "5203", "5901", "5902", "5903"), assembly = "ROSLIN", read.context="CpG", mincov=2, treatment = c(0,0,0,0,0,0,1,1,1,1,1,1))
+```                      
+          
+```{r, eval = FALSE}
+save(myobj, file = "../analyses/myobj")
+
+```
+          
+          
+          
+          
+                        
